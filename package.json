@@ -1,0 +1,26 @@
+{
+  "name": "node-mongodb_tute",
+  "version": "1.0.0",
+  "description": "This is the intro tutorial for a basic CRUD app using Node and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markellisdev/node-MongoDB_setup_tute.git"
+  },
+  "keywords": [
+    "node",
+    "mongodb"
+  ],
+  "author": "Mark Ellis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markellisdev/node-MongoDB_setup_tute/issues"
+  },
+  "homepage": "https://github.com/markellisdev/node-MongoDB_setup_tute#readme",
+  "dependencies": {
+    "mongodb": "^2.2.26"
+  }
+}
