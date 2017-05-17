@@ -14,9 +14,11 @@ MongoClient.connect(url, function(err, db) {
     console.log("Connected succesfully to server");
 
     insertDocuments(db, function() {
-        // findDocuments(db, function () {
+        findDocuments(db, function () {
         updateDocument(db, function () {
-            db.close();
+    //         removeDocument(db, function() {
+                db.close();
+            });
         });
     });
 });
@@ -41,8 +43,8 @@ var findDocuments = function(db, callback) {
     // Get the documents collection
     var collection = db.collection('documents');
     // Find some documents
-    // collection.find({}).toArray(function(err, docs) { this is ALL Docs
-    collection.find({'a': 3}).toArray(function(err, docs) {
+    collection.find({}).toArray(function(err, docs) { //this is ALL Docs
+    // collection.find({'a': 3}).toArray(function(err, docs) {
         assert.equal(err, null);
         console.log("Found the following records");
         console.log(docs);
@@ -62,4 +64,17 @@ var updateDocument = function(db, callback) {
         console.log("Updated the document with the field a equal to 2");
         callback(result);
     })
+}
+
+/* Remove a document */
+var removeDocument = function(db, callback) {
+    // Get the documents collection
+    var collection = db.collection('documents');
+    // Delete document where a is 3
+    collection.deleteOne({ a : 3 }, function(err, result) {
+        assert.equal(err, null);
+        assert.equal(1, result.result.n);
+        console.log("Removed the document with the field a equal to 3");
+        callback(result);
+    });
 }
