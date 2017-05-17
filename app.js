@@ -14,13 +14,14 @@ MongoClient.connect(url, function(err, db) {
     console.log("Connected succesfully to server");
 
     insertDocuments(db, function() {
-        findDocuments(db, function () {
-        updateDocument(db, function () {
+        // findDocuments(db, function () {
+        // updateDocument(db, function () {
     //         removeDocument(db, function() {
+        indexCollection(db, function() {
                 db.close();
             });
         });
-    });
+    // });
 });
 
 var insertDocuments = function(db, callback) {
@@ -78,3 +79,15 @@ var removeDocument = function(db, callback) {
         callback(result);
     });
 }
+
+/* Index a Collection */
+var indexCollection = function (db, callback) {
+    db.collection('documents').createIndex(
+        { "a": 1 },
+            null,
+        function(err, results) {
+            console.log(results);
+            callback();
+        }
+    );
+};
